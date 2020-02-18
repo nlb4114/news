@@ -11,45 +11,80 @@
     <!--Google Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Bungee+Shade|Caveat|Indie+Flower|Permanent+Marker|Satisfy|Sedgwick+Ave+Display|Shadows+Into+Light&display=swap" rel="stylesheet">
     <title>The Backpacker Backes Travel Blog</title>
+    
+    <style>
+    .jumbotron {
+    /* Background */
+    background-attachment: fixed;
+    background-image: url("home2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 300px;
+    margin-top: 0px;
 
-    <link rel="stylesheet" type="text/css" href="news.css"></link>
+    /* Fonts */
+    font-family: 'Sedgwick Ave Display', cursive;
+    color:red;
+    text-shadow: 1px 1px 1px black;
+    line-height: 2;
+    
+      }
+.display-4 {
+    padding-top: 50px;
+    text-align: center;
+}
+
+.footer {
+        position: bottom;
+        bottom: 0;
+        width: 100%;
+        height: 60px;
+        line-height: 60px;
+        background-color: grey;
+      }
+.col-md-3 {
+        text-align: center;
+        
+      }
+.col-md-3 img {
+        align-content: center;
+        width: 250px;
+        height: 250px;
+      }
+.blog-post img {
+    height: auto;
+}
+
+.blog-post {
+    text-align: center;
+}
+
+/* unvisited link */
+a:link {
+    color: black;
+  }
+  
+  /* visited link */
+  a:visited {
+    color: red;
+  }
+  /* mouse over link */
+a:hover {
+    color: blue;
+  }
+
+  .sidebar img{
+    height: auto;
+  }
+  </style>
+    
 
   </head>
   <body>
-           <!-- Static navbar -->
-           <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-            <span class="navbar-brand mb-0 h1">Backpacker Backes
-            </span>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link active" href="index.html">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item mr-auto">
-                  <a class="nav-link" href="about.html">About Me</a>
-                </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="destinations.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Destinations
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="Asia.html">Asia</a>
-                      <a class="dropdown-item" href="Europe.html">Europe</a>
-                    </div>
-                    <li class="nav-item">
-                      <a class="nav-link" href="contact.html">Contact</a>
-                    </li>
-                  </ul>
-              </div>
-            </nav>
-            <!--End Static navbar-->
-
-      <div class="jumbotron jumbotron-fluid">
+           <div class="jumbotron jumbotron-fluid">
         <div class="container">
-          <h1 class="display-4">Nick Backes' Backpacker Blog</h1 class="display-4">
+          <h1 class="display-4">Nick Backes Backpacker Blog</h1 class="display-4">
         </div>
       </div>
 
@@ -57,37 +92,20 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col text-center">
-            <h2>Recent Blogs</h2>
+            <h2> Todays Top Headline: <%= @headline %> </h2>
           </div>
         </div>
-        <div class="row mt-4" id="content">
-          <div class="col-md-9">
-              <div class="blog-post">
-              <a href="rome.html">
-                <h3>Rome</h3>
-            </a>
-            <!--placeholder image 850x350   https://placehold.it/850x350-->
-              <img class="thumbnail img-fluid" src="rome2.jpg">
-              <p>3 days in Rome with my new friends, Chris and Fabio </p>
-              </div>
-
-              <div class="blog-post">
-                <a href="barcelona.html">
-                  <h3>Barcelona</h3>
-              </a>
-              <img class="thumbnail img-fluid" src="barcelona2.jpg">
-              <p>We hit all the great instagram spots here </p>
-              </div>
-          </div>
+        
 
           <!--Sidebar-->
           <div class="col-md-3 sidebar">
-            <h1>Welcome!</h1>
-            <br>
-            <img src="welcome1.jpg" class="rounded-circle img-fluid" alt="welcome">
-              <br>
-              <br>
-              <p>This site is a free resource for other aspiring adventurers to discover the world!</p>
+            <h1> Weather Forecast </h1>
+            <p>It is currently <%= @current_temp %> degrees and <%= @current_cond %> <p>
+            <ul>
+                <% for day in @forecast %>
+                    <li><%= A high temperature of day["temperatureHigh"] and day["summary"] %></li>
+                <% end %>
+            </ul> 
             </div>
           </div>
         </div>
@@ -96,7 +114,7 @@
       <!--Footer-->
       <footer class="footer">
         <div class="container">
-          <span class="text-muted">Nick Backes' Backpacker Blog</span>
+          <span class="text-muted">Nick Backes Backpacker Blog</span>
         </div>
       </footer>  
 

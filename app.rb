@@ -4,6 +4,7 @@ require "geocoder"
 require "forecast_io"
 require "httparty"
 require 'news-api'
+require 'open-uri'
 def view(template); erb template.to_sym; end
 before { puts "Parameters: #{params}" }                                     
 
@@ -19,6 +20,13 @@ get "/news" do
         lat_long = results.first.coordinates
         lat = lat_long[0]
         long = lat_long[1]
+#         reverse_geocoded_by :lat, :long do |obj,results|
+#   if geo = results.first
+#     obj.city    = geo.city
+#     obj.state = geo.state
+#   end
+# end
+# after_validation :reverse_geocode
         
 
         # configure the Dark Sky API with your API key
@@ -27,21 +35,30 @@ get "/news" do
         forecast = ForecastIO.forecast(lat, long).to_hash
         #"#{forecast}"
 
-#current_temp = forecast["currently"]["temperature"]
-#current_cond = forecast["currently"]["summary"]
-#for day in forecast["daily"]["data"]
-#end
+@current_temp = forecast["currently"]["temperature"]
+@current_cond = forecast["currently"]["summary"]
+@forecast = forecast["daily"]["data"]
+for day in forecast["daily"]["data"]
+@high_temp = forecast["daily"]["data"][0]["temperatureHigh"]
+@daily_sum = forecast["daily"]["data"][0]["summary"]
+end
 
 # Init
 #newsapi = News.new("2487f35b8e7047ecbbc6edfe3c104c31")             
 
 # /v2/top-headlines
-url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=2487f35b8e7047ecbbc6edfe3c104c31"
-news = HTTParty.get(url).parsed_response.to_hash
+#url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=2487f35b8e7047ecbbc6edfe3c104c31"
+#news = HTTParty.get(url).parsed_response.to_hash
 # news is now a Hash you can pretty print (pp) and parse for your output
-
+url = 'http://newsapi.org/v2/top-headlines?'\
+      'country=us&'\
+      'apiKey=2487f35b8e7047ecbbc6edfe3c104c31'
+req = open(url)
+response_body = req.read
+puts response_body
+#"#{response_body}"
                                           
-    view "news"
+view "news"
 
 end
 
