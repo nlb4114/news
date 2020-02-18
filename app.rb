@@ -55,8 +55,10 @@ url = 'http://newsapi.org/v2/top-headlines?'\
       'apiKey=2487f35b8e7047ecbbc6edfe3c104c31'
 req = open(url)
 response_body = req.read
-puts response_body
-#"#{response_body}"
+
+@headline = response_body ["articles"][0]["title"]
+#puts response_body
+
                                           
 view "news"
 

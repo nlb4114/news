@@ -20,18 +20,18 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    height: 300px;
+    height: 200px;
     margin-top: 0px;
 
     /* Fonts */
     font-family: 'Sedgwick Ave Display', cursive;
-    color:red;
+    color:black;
     text-shadow: 1px 1px 1px black;
     line-height: 2;
     
       }
 .display-4 {
-    padding-top: 50px;
+    padding-top: 0px;
     text-align: center;
 }
 
@@ -84,7 +84,7 @@ a:hover {
   <body>
            <div class="jumbotron jumbotron-fluid">
         <div class="container">
-          <h1 class="display-4">Nick Backes Backpacker Blog</h1 class="display-4">
+          <h1 class="display-4">Backes Daily News</h1 class="display-4">
         </div>
       </div>
 
@@ -92,7 +92,7 @@ a:hover {
       <div class="container-fluid">
         <div class="row">
           <div class="col text-center">
-            <h2> Todays Top Headline: <%= @headline %> </h2>
+            <h2> News And Weather For Your City <%= @headline %> </h2>
           </div>
         </div>
         
@@ -101,11 +101,12 @@ a:hover {
           <div class="col-md-3 sidebar">
             <h1> Weather Forecast </h1>
             <p>It is currently <%= @current_temp %> degrees and <%= @current_cond %> <p>
+
             <ul>
                 <% for day in @forecast %>
-                    <li><%= A high temperature of day["temperatureHigh"] and day["summary"] %></li>
-                <% end %>
-            </ul> 
+                <li>A high temperature of <%= day["temperatureHigh"] %> and <%= day["summary"] %></li>
+                 <% end %>
+            </ul>
             </div>
           </div>
         </div>
