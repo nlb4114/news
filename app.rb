@@ -4,7 +4,6 @@ require "geocoder"
 require "forecast_io"
 require "httparty"
 require 'news-api'
-require 'open-uri'
 def view(template); erb template.to_sym; end
 before { puts "Parameters: #{params}" }                                     
 
