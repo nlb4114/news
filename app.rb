@@ -50,13 +50,14 @@ end
 #url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=2487f35b8e7047ecbbc6edfe3c104c31"
 #news = HTTParty.get(url).parsed_response.to_hash
 # news is now a Hash you can pretty print (pp) and parse for your output
-url = 'http://newsapi.org/v2/top-headlines?'\
-      'country=us&'\
-      'apiKey=2487f35b8e7047ecbbc6edfe3c104c31'
-req = open(url)
-response_body = req.read
+url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=2487f35b8e7047ecbbc6edfe3c104c31"
+news = HTTParty.get(url).parsed_response.to_hash
+# news is now a Hash you can pretty print (pp) and parse for your output
 
-@headline = response_body ["articles"][0]["title"]
+@news = news["articles"]
+@headline = news["articles"][0]["title"]
+@newslink = news["articles"][0]["url"]
+@newsimg = news["articles"][0]["urlToImage"]
 #puts response_body
 
                                           

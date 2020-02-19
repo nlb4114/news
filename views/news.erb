@@ -9,14 +9,13 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!--Google Fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Bungee+Shade|Caveat|Indie+Flower|Permanent+Marker|Satisfy|Sedgwick+Ave+Display|Shadows+Into+Light&display=swap" rel="stylesheet">
-    <title>The Backpacker Backes Travel Blog</title>
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Bungee+Shade|Caveat|Indie+Flower|Permanent+Marker|Satisfy|Sedgwick+Ave+Display|Anton|Merriweather|Oswald|Playfair+Display|Squada+One&|Shadows+Into+Light&display=swap" rel="stylesheet">
+    <title>Backes News Daily</title>
     
     <style>
     .jumbotron {
     /* Background */
-    background-attachment: fixed;
-    background-image: url("home2.jpg");
+    background-color: lightgrey;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -24,10 +23,11 @@
     margin-top: 0px;
 
     /* Fonts */
-    font-family: 'Sedgwick Ave Display', cursive;
+    font-family: 'Merriweather', serif;
+    font-size: 30px;
     color:black;
     text-shadow: 1px 1px 1px black;
-    line-height: 2;
+    line-height: 3;
     
       }
 .display-4 {
@@ -52,6 +52,17 @@
         width: 250px;
         height: 250px;
       }
+.col-md {
+      text-align: center;
+    }
+
+h1 {
+        text-align: center;
+}
+
+h2 {
+        padding-bottom: 10px;
+}
 .blog-post img {
     height: auto;
 }
@@ -67,7 +78,7 @@ a:link {
   
   /* visited link */
   a:visited {
-    color: red;
+    color: purple;
   }
   /* mouse over link */
 a:hover {
@@ -77,45 +88,66 @@ a:hover {
   .sidebar img{
     height: auto;
   }
+
+  ul {
+  text-align: center;
+  list-style: inside;
+}
+.mainheadline {
+margin-top: 20px;
+margin-bottom: 20px;
+}
+ 
+.text-responsive {
+  font-size: calc(100% + 1vw + 1vh);
+}
   </style>
     
 
   </head>
   <body>
-           <div class="jumbotron jumbotron-fluid">
+           <div class="jumbotron jumbotron-fluid mx-auto">
         <div class="container">
-          <h1 class="display-4">Backes Daily News</h1 class="display-4">
+          <h1 class="display-3 mx-auto">BACKES NEWS DAILY</h1 class="display-3">
         </div>
       </div>
 
       <!--Main Page-->
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col text-center">
-            <h2> News And Weather For Your City <%= @headline %> </h2>
-          </div>
-        </div>
-        
+      <div class="container-fluid">        
 
-          <!--Sidebar-->
+          <!--WeatherBar-->
+          <div class ="row">
           <div class="col-md-3 sidebar">
-            <h1> Weather Forecast </h1>
+            <h3> Today's Weather </h3>
             <p>It is currently <%= @current_temp %> degrees and <%= @current_cond %> <p>
-
-            <ul>
+            <br>
+            <h4> Weather Outlook </h4>
+            <ul class="list-unstyled" "mx-auto" "justify-content-center">
                 <% for day in @forecast %>
                 <li>A high temperature of <%= day["temperatureHigh"] %> and <%= day["summary"] %></li>
                  <% end %>
             </ul>
             </div>
+            <div class="col-md mx-auto justify-content-center">
+            <h2> News For You </h2>
+            <ul class="list-unstyled">
+                <% for headline in @news %>
+                <li class="font-weight-bold"> <%= headline["title"] %> </li>
+                <li> <a href="<%= headline["url"] %>" class="mx-auto" "text-center">Click To View Article</a>  </li>
+                 <% end %>
+            </ul>
+            </div>
+            </div>
           </div>
+        </div>
+        </div>
         </div>
       </div>
 
       <!--Footer-->
       <footer class="footer">
         <div class="container">
-          <span class="text-muted">Nick Backes Backpacker Blog</span>
+          <span class="text-muted">Backes Daily News</span>
         </div>
       </footer>  
 
