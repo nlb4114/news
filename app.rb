@@ -37,10 +37,17 @@ get "/news" do
 @current_temp = forecast["currently"]["temperature"]
 @current_cond = forecast["currently"]["summary"]
 @forecast = forecast["daily"]["data"]
+
+
+#timestamp = forecast["daily"]["data"][0]["time"]
+#@date = DateTime.strptime("timestamp",'%s')
+#@date = Time.at(timestamp).strftime("%B %e, %Y")
 for day in forecast["daily"]["data"]
 @high_temp = forecast["daily"]["data"][0]["temperatureHigh"]
 @daily_sum = forecast["daily"]["data"][0]["summary"]
+@timestamp = forecast["daily"]["data"][0]["time"]
 end
+
 
 # Init
 #newsapi = News.new("2487f35b8e7047ecbbc6edfe3c104c31")             

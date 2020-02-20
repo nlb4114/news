@@ -63,6 +63,11 @@ h1 {
 
 h2 {
         padding-bottom: 10px;
+        font-family: 'Merriweather', serif;
+}
+
+h3 {
+    font-family: 'Merriweather', serif;
 }
 .blog-post img {
     height: auto;
@@ -119,18 +124,20 @@ margin-bottom: 20px;
           <!--WeatherBar-->
           <div class ="row">
           <div class="col-md-3 sidebar">
-            <h3> Today's Weather </h3>
+            <h3><u> Today's Weather </u></h3>
             <p>It is currently <%= @current_temp %> degrees and <%= @current_cond %> <p>
             <br>
             <h4> Weather Outlook </h4>
             <ul class="list-unstyled" "mx-auto" "justify-content-center">
                 <% for day in @forecast %>
+                <li> <%= day["time"] %></li>
                 <li>A high temperature of <%= day["temperatureHigh"] %> and <%= day["summary"] %></li>
+                <br>
                  <% end %>
             </ul>
             </div>
             <div class="col-md mx-auto justify-content-center">
-            <h2> News For You </h2>
+            <h2><u> News For You </u></h2>
             <ul class="list-unstyled">
                 <% for headline in @news %>
                 <li class="font-weight-bold"> <%= headline["title"] %> </li>
