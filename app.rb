@@ -39,15 +39,19 @@ get "/news" do
 @forecast = forecast["daily"]["data"]
 
 
-#timestamp = forecast["daily"]["data"][0]["time"]
+timestamp = forecast["daily"]["data"][0]["time"]
 #"#{timestamp}"
 #@date = DateTime.strptime("timestamp",'%s')
-#date = Time.at(timestamp).strftime("%B %e, %Y")
-#"#{date}"
+@date = Time.at(timestamp).strftime("%B %e, %Y")
+puts "#{@date}"
 for day in forecast["daily"]["data"]
 @high_temp = forecast["daily"]["data"][0]["temperatureHigh"]
 @daily_sum = forecast["daily"]["data"][0]["summary"]
 @timestamp = forecast["daily"]["data"][0]["time"]
+timestamp = forecast["daily"]["data"][0]["time"]
+
+@date = Time.at(@timestamp).strftime("%B %e, %Y")
+#puts "#{@high_temp}"
 
 end
 

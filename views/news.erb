@@ -40,7 +40,7 @@
             <h4> Weather Outlook </h4>
             <ul class="list-unstyled" "mx-auto" "justify-content-center">
                 <% for day in @forecast %>
-                <li> <%= day["time"] %></li>
+                <li> <%= Time.at(day["time"]).strftime("%a") %></li>
                 <li>A high temperature of <%= day["temperatureHigh"] %> and <%= day["summary"] %></li>
                 <br>
                  <% end %>
